@@ -15,7 +15,7 @@ services:
       - VIRTUAL_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_EMAIL=${EMAIL} 
-      - WEBHOOK_TUNNEL_URL=https://${VIRTUAL_HOST}
+      - WEBHOOK_URL=https://${VIRTUAL_HOST}
     volumes:
       - /mnt/WD_4TB/DockerServer/n8n-py/data:/home/node/.n8n
       - /mnt/WD_4TB/DockerServer/n8n-py/local-files:/files
