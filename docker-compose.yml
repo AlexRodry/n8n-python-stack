@@ -5,8 +5,6 @@ services:
     build: .
     container_name: n8n-python
     restart: unless-stopped
-    ports:
-      - "5678:5678"
     environment:
       - TZ=Europe/Madrid
       - N8N_BASIC_AUTH_ACTIVE=true
@@ -14,6 +12,15 @@ services:
       - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
       - EXECUTE_COMMAND_ALLOW_EXTERNAL=true
       - N8N_SECURE_COOKIE=false
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_EMAIL=${EMAIL} 
+      - WEBHOOK_TUNNEL_URL=https://${VIRTUAL_HOST}
     volumes:
       - /mnt/WD_4TB/DockerServer/n8n-py/data:/home/node/.n8n
       - /mnt/WD_4TB/DockerServer/n8n-py/local-files:/files
+    networks:
+      - proxy-net
+networks:
+  proxy-net:
+    external: true
