@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  n8n:
+    build: .
+    container_name: n8n-python
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - TZ=Europe/Madrid
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
+      - EXECUTE_COMMAND_ALLOW_EXTERNAL=true
+    volumes:
+      - /mnt/WD_4TB/DockerServer/n8n-py/data:/home/node/.n8n
+      - /mnt/WD_4TB/DockerServer/n8n-py/local-files:/files
