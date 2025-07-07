@@ -13,6 +13,7 @@ services:
       - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
       - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
       - EXECUTE_COMMAND_ALLOW_EXTERNAL=true
+      - N8N_SECURE_COOKIE=false
     volumes:
       - /mnt/WD_4TB/DockerServer/n8n-py/data:/home/node/.n8n
       - /mnt/WD_4TB/DockerServer/n8n-py/local-files:/files
