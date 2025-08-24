@@ -11,11 +11,15 @@ services:
       - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
       - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
       - EXECUTE_COMMAND_ALLOW_EXTERNAL=true
-      - N8N_SECURE_COOKIE=false
+      - N8N_SECURE_COOKIE=true
       - VIRTUAL_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_EMAIL=${EMAIL} 
       - WEBHOOK_URL=https://${VIRTUAL_HOST}
+      - N8N_HOST=${VIRTUAL_HOST}
+      - N8N_PORT=${N8N_PORT}
+      - N8N_PROTOCOL=https
+      - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL}
     volumes:
       - /mnt/WD_4TB/DockerServer/n8n-py/data:/home/node/.n8n
       - /mnt/WD_4TB/DockerServer/n8n-py/local-files:/files
